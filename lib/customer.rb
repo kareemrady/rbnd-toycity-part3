@@ -14,11 +14,6 @@ class Customer
     @@customers.find {|customer| customer.name == name}
   end
 
-  def purchase(product)
-    Transaction.new(self, product)
-  end
-  
-
 
 
 
