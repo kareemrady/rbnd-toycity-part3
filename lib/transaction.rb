@@ -26,13 +26,20 @@ class Transaction
   private
 
   def add_transaction
+
     if(@product.stock == 0)
-      raise OutOfStockError: "#{@product.title} is out of stock"
+      begin
+      raise OutOfStockError, "Error : '#{@product.title}' is out of stock"
+    rescue => error
+      puts error
+      end
+
     else
       @id = @@id
       @@id +=1
       @@transactions << self
       edit_stock
+
     end
   end
 

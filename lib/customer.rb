@@ -17,7 +17,7 @@ class Customer
   def purchase(product)
     Transaction.new(self, product)
   end
-  
+
 
 
 
@@ -26,10 +26,17 @@ class Customer
 
   def add_to_customers
     customers_names_arr = @@customers.map{|customer| customer.name}
+
     if customers_names_arr.include?(@name)
-      raise DuplicateCustomerError: "Customer: #{@name} Already Exists"
+      begin
+      raise DuplicateCustomerError, "Error : '#{@name}' Already Exists"
+    rescue => error
+      puts error
+      end
     else
       @@customers << self
     end
+
+
   end
 end

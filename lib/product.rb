@@ -34,8 +34,12 @@ class Product
   private
 
   def add_to_products
-  if @@products.reduce(false) {|bool_value, product| bool_value || product.title == @title}
-    raise ProductDuplicateError: "#{@title} already exists"
+  if @@products.map {|product| product.title}.include?(@title)
+    begin
+    raise DuplicateProductError, "Error : '#{@title}' already exists"
+    rescue => error
+      puts error
+  end
   else
     @@products << self
   end
