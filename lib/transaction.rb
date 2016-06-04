@@ -3,12 +3,9 @@ class Transaction
   @@id = 1
   @@transactions = []
   def initialize(customer, product)
-    @id = @@id
-    @@id +=1
     @customer = customer
     @product = product
-    @@transactions << self
-    edit_stock
+    add_transaction
   end
 
   def self.all
@@ -27,6 +24,17 @@ class Transaction
 
 
   private
+
+  def add_transaction
+    if(@product.stock == 0)
+      raise OutOfStockError: "#{@product.title} is out of stock"
+    else
+      @id = @@id
+      @@id +=1
+      @@transactions << self
+      edit_stock
+    end
+  end
 
   def edit_stock
     @product.stock -= 1
