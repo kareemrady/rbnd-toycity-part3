@@ -36,6 +36,15 @@ class Customer
     puts
   end
 
+  def return_product(product)
+    transactions = @transactions.find_all {|transaction| transaction.product == product}
+    transactions.each do |transaction|
+      transaction.refund_customer
+      Transaction.new(self, product,refund = true)
+    end
+
+  end
+
 
   private
 

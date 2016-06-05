@@ -1,8 +1,12 @@
 How long did you spend working on this project?
-The project took me a total of 5 hrs
+The project took me a total of 8 hrs distrubuted on 3 days
 What was the most rewarding challenge you conquered?
-I couldn't get the error handling requirements to work but after some googling and trials it worked fine after thate
+Adding a return capability, lots of different ways to do it but finding the best way is a bit of a challenge
 What two additional features did you build? Why?
-- ADD a return capability for a bought product
--track purchases per user
+- ADD a return capability for a bought product - makes sense specially this a toy store
+-track purchases per user - in order to be able to execute the return properly i needed to track all purchases by a user
+- Added a refund variable and method so that i can support the return product properly
+- show customer purchases -makes sense that you would store all purchases made by a specific user
+-show all transactions - track all transactions even refunds
 Where do you still have room to grow?
+I believe more practice is needed, specially around how the different classes interact to create a feature right now that requires alot of thinking and alot of trilas to get the functionality working

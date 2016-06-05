@@ -48,16 +48,17 @@ puts walter.name # Should return "Walter Latimer"
 
 transaction = Transaction.new(walter, nanoblock)
 
-# puts transaction.id # Should return 1
-# puts transaction.product == nanoblock # Should return true
-# puts transaction.product == firehouse # Should return false
-# puts transaction.customer == walter # Should return true
+ puts transaction.id # Should return 1
+ puts transaction.product == nanoblock # Should return true
+ puts transaction.product == firehouse # Should return false
+ puts transaction.customer == walter # Should return true
 
-# puts nanoblock.stock # Should return 11
+ puts nanoblock.stock # Should return 11
 
 # PURCHASES
 
 puts walter.purchase(nanoblock)
+puts nanoblock.stock # Should return 10
 
  puts Transaction.all.count # Should return 2
 
@@ -68,6 +69,18 @@ puts walter.purchase(nanoblock)
 
 walter.purchase(firehouse)
 # Should return OutOfStockError: 'LEGO Firehouse Headquarter' is out of stock.
-puts Transaction.all.count
+
+#testing Feature 1 to show all purchases made by a user
+walter.show_purchases
+
+puts "Number of Walter's Transactions / purchases before return : #{walter.transactions.count}"
+
+#Testing Feature 2 - returning product will put the product back in stock and modify customer's purchases and add the transaction with type refund
+walter.return_product(nanoblock)
+puts "Number of Walter's Transactions / purchases after return : #{walter.transactions.count}"
+puts "Number of NanoBlocks in stock after return : #{nanoblock.stock}"
+puts
 
 walter.show_purchases
+
+puts "#{Transaction.show_transactions}"
