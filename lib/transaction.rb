@@ -36,7 +36,7 @@ class Transaction
       @@id +=1
       @@transactions << self
       edit_stock({new_purchase: true })
-      @customer.purchases << @product
+      @customer.transactions << self
 
     end
   end

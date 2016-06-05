@@ -1,11 +1,11 @@
 class Customer
   attr_reader :name
-  #added a purchases array variable
-  attr_accessor :purchases
+  #added a transactions array variable
+  attr_accessor :transactions
   @@customers = []
   def initialize(options = {})
     @name = options[:name]
-    @purchases = []
+    @transactions = []
     add_to_customers
   end
 
@@ -28,9 +28,9 @@ class Customer
     puts "Purchases for user: #{@name}"
     puts "-"*50
     puts
-    @purchases.each {|product| puts product.title}
+    @transactions.each {|transaction| puts transaction.product.title}
     puts
-    total_purchases_value = @purchases.reduce(0) {|sum, product| sum + product.price}
+    total_purchases_value = @transactions.reduce(0) {|sum, transaction| sum + transaction.product.price}
     puts "total Purchases by #{@name}: #{total_purchases_value}$"
     puts "-"*50
     puts
