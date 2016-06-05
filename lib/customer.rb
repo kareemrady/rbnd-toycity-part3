@@ -26,9 +26,13 @@ class Customer
 #added show purchases feature
   def show_purchases
     puts "Purchases for user: #{@name}"
-    puts "-"*30
+    puts "-"*50
     puts
     @purchases.each {|product| puts product.title}
+    puts
+    total_purchases_value = @purchases.reduce(0) {|sum, product| sum + product.price}
+    puts "total Purchases by #{@name}: #{total_purchases_value}$"
+    puts "-"*50
     puts
   end
 
