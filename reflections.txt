@@ -1,0 +1,8 @@
+How long did you spend working on this project?
+The project took me a total of 5 hrs
+What was the most rewarding challenge you conquered?
+I couldn't get the error handling requirements to work but after some googling and trials it worked fine after thate
+What two additional features did you build? Why?
+- ADD a return capability for a bought product
+-track purchases per user
+Where do you still have room to grow?

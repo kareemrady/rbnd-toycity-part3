@@ -20,16 +20,13 @@ class Transaction
 
 
 
-
-
-
   private
 
   def add_transaction
 
     if(@product.stock == 0)
       begin
-      raise OutOfStockError, "Error : '#{@product.title}' is out of stock"
+      raise OutOfStockError, "OutOfStockError: '#{@product.title}' is out of stock"
     rescue => error
       puts error
       end
@@ -38,12 +35,23 @@ class Transaction
       @id = @@id
       @@id +=1
       @@transactions << self
-      edit_stock
+      edit_stock({new_purchase: true })
+      @customer.purchases << @product
 
     end
   end
 
-  def edit_stock
-    @product.stock -= 1
+  def edit_stock(options = {})
+    purchase_operation = options[:new_purchase]
+    return_operation = options[:return_purchase]
+    if return_operation.nil? && purchase_operation
+      @product.stock -= 1
+    else
+      @product.stock +=1
+    end
   end
+
+
+
+
 end

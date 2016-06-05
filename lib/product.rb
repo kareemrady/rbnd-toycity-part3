@@ -36,7 +36,7 @@ class Product
   def add_to_products
   if @@products.map {|product| product.title}.include?(@title)
     begin
-    raise DuplicateProductError, "Error : '#{@title}' already exists"
+    raise DuplicateProductError, "DuplicateProductError: '#{@title}' already exists"
     rescue => error
       puts error
   end

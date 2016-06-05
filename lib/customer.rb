@@ -1,8 +1,11 @@
 class Customer
   attr_reader :name
+  #added a purchases array variable
+  attr_accessor :purchases
   @@customers = []
   def initialize(options = {})
     @name = options[:name]
+    @purchases = []
     add_to_customers
   end
 
@@ -14,12 +17,20 @@ class Customer
     @@customers.find {|customer| customer.name == name}
   end
 
+
   def purchase(product)
     Transaction.new(self, product)
+
   end
 
-
-
+#added show purchases feature
+  def show_purchases
+    puts "Purchases for user: #{@name}"
+    puts "-"*30
+    puts
+    @purchases.each {|product| puts product.title}
+    puts
+  end
 
 
   private
@@ -29,7 +40,7 @@ class Customer
 
     if customers_names_arr.include?(@name)
       begin
-      raise DuplicateCustomerError, "Error : '#{@name}' Already Exists"
+      raise DuplicateCustomerError, "DuplicateCustomerError: '#{@name}' Already Exists"
     rescue => error
       puts error
       end
